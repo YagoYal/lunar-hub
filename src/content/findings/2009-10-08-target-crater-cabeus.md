@@ -7,7 +7,9 @@ sourceOrganization: "NASA"
 publishedDate: "2009-10-08"
 retrievedAt: "2026-09-04T17:10:41.547Z"
 tags: ["apod"]
-reviewStatus: "draft"
+reviewStatus: "published"
+reviewedBy: "YagoYal"
+reviewedAt: "2026-09-04"
 image:
   src: "https://apod.nasa.gov/apod/image/0910/391631main_southpole2_c600.jpg"
   alt: "Target Crater Cabeus"

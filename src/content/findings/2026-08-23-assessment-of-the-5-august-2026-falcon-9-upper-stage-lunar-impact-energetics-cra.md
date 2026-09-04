@@ -7,7 +7,9 @@ sourceOrganization: "arXiv"
 publishedDate: "2026-08-23"
 retrievedAt: "2026-09-04T17:10:55.348Z"
 tags: ["arxiv", "astro-ph.EP"]
-reviewStatus: "draft"
+reviewStatus: "published"
+reviewedBy: "YagoYal"
+reviewedAt: "2026-09-04"
 ---
 
 <!-- Rascunho gerado automaticamente. Revise o resumo, confirme a atribuição -->

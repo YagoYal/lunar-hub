@@ -2,6 +2,8 @@
 
 Site de divulgação científica sobre pesquisas lunares, com dados reais e públicos (NASA, ESA, JAXA, ISRO, arXiv etc.), sempre creditando a fonte. Ver o plano completo de arquitetura em `docs/study-notes/decisions.md`.
 
+**Antes de adicionar qualquer item novo aqui, leia `docs/ROTINA.md`.** O risco real deste projeto não é técnico — é sustentar a revisão de conteúdo. Mais arquitetura sem essa rotina rodando é fuga, não progresso.
+
 ## v1 (em andamento)
 
 - [x] 1. Fundação — tokens CSS globais, `BaseLayout`, `Header`/`Hero`/`Footer` com âncoras
