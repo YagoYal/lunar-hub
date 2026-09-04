@@ -1,0 +1,45 @@
+name: Fetch new findings
+
+# Ingestion never publishes directly — it only writes drafts and opens a
+# PR, so a human always reviews before anything reaches main/production.
+# See docs/study-notes/decisions.md.
+on:
+  schedule:
+    - cron: "0 12 * * *" # daily, 12:00 UTC
+  workflow_dispatch: {} # allow manual runs from the Actions tab
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Run ingestion scripts
+        env:
+          NASA_API_KEY: ${{ secrets.NASA_API_KEY }}
+        run: npm run fetch:sources
+
+      - name: Open PR with new drafts (if any)
+        uses: peter-evans/create-pull-request@v6
+        with:
+          commit-message: "chore: novos rascunhos de findings"
+          title: "Novos rascunhos para revisão"
+          body: |
+            Rascunhos gerados automaticamente pelo pipeline de ingestão
+            (`scripts/fetch-sources`). Nada aqui é publicado até que um
+            humano revise o resumo, a atribuição da fonte e a licença, e
+            mova o arquivo para fora de `src/content/findings/_drafts/`.
+          branch: auto/fetch-findings
+          add-paths: src/content/findings/_drafts/**
+          labels: rascunho,revisão-pendente

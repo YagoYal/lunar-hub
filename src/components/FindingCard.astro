@@ -1,0 +1,87 @@
+---
+import type { CollectionEntry } from "astro:content";
+import SourceBadge from "./SourceBadge.astro";
+
+interface Props {
+	entry: CollectionEntry<"findings">;
+}
+
+const { entry } = Astro.props;
+const { data } = entry;
+const dateLabel = data.publishedDate.toLocaleDateString("pt-BR", {
+	year: "numeric",
+	month: "short",
+	day: "numeric",
+});
+---
+
+<article class="finding-card">
+	<SourceBadge organization={data.sourceOrganization} name={data.sourceName} />
+	<h3><a href={`/findings/${entry.id}/`}>{data.title}</a></h3>
+	<p class="summary">{data.summary}</p>
+	<div class="meta">
+		<time datetime={data.publishedDate.toISOString()}>{dateLabel}</time>
+		<div class="links">
+			<a href={`/findings/${entry.id}/`}>Detalhes</a>
+			<a href={data.sourceUrl} target="_blank" rel="noopener noreferrer">
+				Ler fonte →
+			</a>
+		</div>
+	</div>
+</article>
+
+<style>
+	.finding-card {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-2);
+		background: var(--surface);
+		border: 1px solid var(--border);
+		border-radius: var(--radius);
+		padding: var(--space-3);
+		height: 100%;
+	}
+
+	.finding-card h3 {
+		margin: 0;
+		font-size: 1.0625rem;
+	}
+
+	.finding-card h3 a {
+		color: var(--text);
+		text-decoration: none;
+	}
+
+	.finding-card h3 a:hover {
+		color: var(--primary-dark);
+	}
+
+	.summary {
+		font-size: 0.9375rem;
+		margin: 0;
+		flex-grow: 1;
+	}
+
+	.meta {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: var(--space-2);
+		font-size: 0.8125rem;
+		flex-wrap: wrap;
+	}
+
+	.meta time {
+		color: var(--text-muted);
+	}
+
+	.links {
+		display: flex;
+		gap: var(--space-2);
+	}
+
+	.links a {
+		text-decoration: none;
+		white-space: nowrap;
+	}
+</style>

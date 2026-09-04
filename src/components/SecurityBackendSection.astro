@@ -1,0 +1,55 @@
+---
+---
+
+<section id="security" class="security">
+	<h2>Segurança e "backend"</h2>
+	<p>
+		O Lunar Hub não tem um backend tradicional: é um site estático, gerado
+		no build a partir de arquivos versionados no Git. Não há contas de
+		usuário, banco de dados público nem envio de dados por visitante — o
+		que já elimina boa parte das superfícies de ataque comuns.
+	</p>
+	<ul>
+		<li>
+			Os scripts que buscam conteúdo em fontes externas rodam em CI (GitHub
+			Actions agendado), nunca em um servidor exposto publicamente.
+		</li>
+		<li>
+			Chaves de API ficam em segredos do CI, nunca no código-fonte nem no
+			navegador do visitante.
+		</li>
+		<li>
+			Conteúdo vindo de terceiros (RSS/APIs) é tratado como não confiável:
+			não é renderizado como HTML bruto, e passa pelo escape padrão do
+			Astro.
+		</li>
+		<li>
+			Novo conteúdo nunca entra direto em produção — vira um rascunho e
+			passa por revisão humana antes de virar uma publicação.
+		</li>
+		<li>
+			Dependências são poucas e monitoradas (auditoria/alertas
+			automáticos); cabeçalhos de segurança (CSP etc.) são configurados na
+			plataforma de hospedagem.
+		</li>
+	</ul>
+</section>
+
+<style>
+	.security {
+		max-width: var(--content-width);
+		margin: 0 auto;
+		padding: var(--space-5) var(--space-3);
+		border-top: 1px solid var(--border);
+	}
+
+	.security ul {
+		display: grid;
+		gap: var(--space-2);
+		padding-left: 1.25rem;
+	}
+
+	.security li {
+		color: var(--text-muted);
+	}
+</style>

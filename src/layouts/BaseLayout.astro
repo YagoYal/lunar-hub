@@ -1,0 +1,44 @@
+---
+import "../styles/global.css";
+import InstallPrompt from "../components/InstallPrompt.astro";
+
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+const {
+	title = "Lunar Hub",
+	description = "Divulgação de pesquisas científicas sobre a Lua, com dados públicos e créditos às fontes originais (NASA, ESA, JAXA e outros).",
+} = Astro.props;
+---
+
+<html lang="pt-BR">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="theme-color" content="#0ea5e9" />
+		<link rel="manifest" href="/manifest.webmanifest" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+		<meta name="apple-mobile-web-app-title" content="Lunar Hub" />
+		<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+		<title>{title}</title>
+		<meta name="description" content={description} />
+	</head>
+	<body>
+		<slot />
+		<InstallPrompt />
+		<script>
+			// Hand-rolled service worker (see public/sw.js) — registered
+			// defensively, failure here should never break the page.
+			if ("serviceWorker" in navigator) {
+				window.addEventListener("load", () => {
+					navigator.serviceWorker.register("/sw.js").catch(() => {});
+				});
+			}
+		</script>
+	</body>
+</html>

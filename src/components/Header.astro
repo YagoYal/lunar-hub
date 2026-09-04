@@ -1,0 +1,95 @@
+---
+const links = [
+	{ href: "#latest", label: "Descobertas" },
+	{ href: "#by-source", label: "Fontes" },
+	{ href: "#methodology", label: "Metodologia" },
+	{ href: "#security", label: "Segurança" },
+	{ href: "#about", label: "Sobre" },
+];
+---
+
+<header class="site-header">
+	<a class="brand" href="#hero">Lunar Hub</a>
+	<nav aria-label="Navegação principal">
+		<ul>
+			{
+				links.map((link) => (
+					<li>
+						<a href={link.href}>{link.label}</a>
+					</li>
+				))
+			}
+		</ul>
+	</nav>
+</header>
+
+<style>
+	.site-header {
+		position: sticky;
+		top: 0;
+		z-index: 10;
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: space-between;
+		gap: var(--space-2) var(--space-3);
+		padding: calc(var(--space-2) + env(safe-area-inset-top, 0px)) var(--space-3) var(--space-2);
+		background: color-mix(in srgb, var(--surface) 88%, transparent);
+		backdrop-filter: blur(8px);
+		border-bottom: 1px solid var(--border);
+	}
+
+	.brand {
+		font-weight: 700;
+		font-size: 1.125rem;
+		color: var(--primary-dark);
+		text-decoration: none;
+	}
+
+	nav ul {
+		list-style: none;
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--space-1) var(--space-3);
+		margin: 0;
+		padding: 0;
+	}
+
+	nav a {
+		color: var(--text-muted);
+		text-decoration: none;
+		font-size: 0.9375rem;
+	}
+
+	nav a:hover {
+		color: var(--primary-dark);
+	}
+
+	@media (max-width: 40rem) {
+		.site-header {
+			justify-content: center;
+			text-align: center;
+		}
+
+		nav ul {
+			justify-content: center;
+			gap: var(--space-1) var(--space-2);
+		}
+
+		nav a {
+			font-size: 0.8125rem;
+		}
+	}
+</style>
+
+<style is:global>
+	/* Anchored sections should land below the sticky header, not under it. */
+	#hero,
+	#latest,
+	#by-source,
+	#methodology,
+	#security,
+	#about {
+		scroll-margin-top: 4.5rem;
+	}
+</style>

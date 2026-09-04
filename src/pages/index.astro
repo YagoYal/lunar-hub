@@ -1,67 +1,59 @@
 ---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import Hero from "../components/Hero.astro";
+import Footer from "../components/Footer.astro";
+import FindingsGrid from "../components/FindingsGrid.astro";
+import FindingsCarousel from "../components/FindingsCarousel";
+import BySourceFilter from "../components/BySourceFilter.astro";
+import MethodologySection from "../components/MethodologySection.astro";
+import SecurityBackendSection from "../components/SecurityBackendSection.astro";
+import { getPublishedFindings, toFindingSummary } from "../lib/findings";
+
+const findings = await getPublishedFindings();
+const organizations = [...new Set(findings.map((f) => f.data.sourceOrganization))];
+const findingSummaries = findings.map(toFindingSummary);
 ---
 
-<html lang="pt-BR">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Lunar Hub</title>
-		<meta name="description" content="Hub de conteúdo sobre exploração lunar — missões, economia, política e tecnologia." />
-	</head>
-	<body>
-		<main>
-			<h1>Lunar Hub</h1>
-			<p>
-				Em construção. Vai reunir conteúdo focado em exploração lunar —
-				missões (Artemis e além), economia, política e infraestrutura —
-				sem tentar competir com a Wikipedia ou a NASA em cobertura geral.
-			</p>
-			<p>
-				Enquanto isso, confira o
-				<a href="https://lunar-ice.vercel.app">Lunar Ice Intelligence</a>,
-				uma ferramenta científica ao vivo de detecção de gelo lunar por IA.
-			</p>
-		</main>
-	</body>
-</html>
+<BaseLayout>
+	<Header />
+	<main>
+		<Hero />
+
+		<section id="latest" class="latest">
+			<h2>Últimas descobertas</h2>
+			<BySourceFilter
+				organizations={organizations}
+				targetSelector=".findings-grid > li"
+			/>
+			<FindingsGrid entries={findings} />
+			<div class="mobile-carousel">
+				<FindingsCarousel client:visible entries={findingSummaries} />
+			</div>
+		</section>
+
+		<MethodologySection />
+		<SecurityBackendSection />
+	</main>
+	<Footer />
+</BaseLayout>
 
 <style>
-	:root {
-		--bg: #f7fafc;
-		--surface: #ffffff;
-		--primary: #0ea5e9;
-		--primary-dark: #0369a1;
-		--text: #0f172a;
-		--text-muted: #475569;
+	.latest {
+		max-width: var(--content-width);
+		margin: 0 auto;
+		padding: var(--space-5) var(--space-3);
+		border-top: 1px solid var(--border);
 	}
 
-	html,
-	body {
-		margin: 0;
-		padding: 0;
-		background: var(--bg);
-		color: var(--text);
-		font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+	/* Grid handles >40rem (see FindingsGrid.astro); carousel takes over below it. */
+	.mobile-carousel {
+		display: none;
 	}
 
-	main {
-		max-width: 40rem;
-		margin: 4rem auto;
-		padding: 0 1.5rem;
-	}
-
-	h1 {
-		color: var(--primary-dark);
-	}
-
-	p {
-		color: var(--text-muted);
-		line-height: 1.6;
-	}
-
-	a {
-		color: var(--primary);
+	@media (max-width: 40rem) {
+		.mobile-carousel {
+			display: block;
+		}
 	}
 </style>

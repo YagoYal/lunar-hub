@@ -1,0 +1,53 @@
+---
+interface Props {
+	organization: string;
+	name: string;
+}
+
+const { organization, name } = Astro.props;
+---
+
+<span class="source-badge" data-org={organization}>
+	<span class="dot" aria-hidden="true"></span>
+	{name}
+</span>
+
+<style>
+	.source-badge {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.375rem;
+		font-size: 0.75rem;
+		font-weight: 600;
+		letter-spacing: 0.01em;
+		color: var(--primary-dark);
+		background: color-mix(in srgb, var(--primary) 12%, var(--surface));
+		border: 1px solid color-mix(in srgb, var(--primary) 25%, var(--border));
+		border-radius: 999px;
+		padding: 0.25rem 0.625rem;
+	}
+
+	.dot {
+		width: 0.4rem;
+		height: 0.4rem;
+		border-radius: 50%;
+		background: var(--primary);
+	}
+
+	/* A few orgs get a distinct accent so the "by source" strip is scannable */
+	.source-badge[data-org="NASA"] {
+		color: #0369a1;
+	}
+	.source-badge[data-org="ESA"] {
+		color: #1d4ed8;
+	}
+	.source-badge[data-org="JAXA"] {
+		color: #7c3aed;
+	}
+	.source-badge[data-org="ISRO"] {
+		color: #b45309;
+	}
+	.source-badge[data-org="arXiv"] {
+		color: #b91c1c;
+	}
+</style>

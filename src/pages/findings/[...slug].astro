@@ -1,0 +1,224 @@
+---
+import { render, type CollectionEntry } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import SourceBadge from "../../components/SourceBadge.astro";
+import FindingCard from "../../components/FindingCard.astro";
+import { getPublishedFindings, getRelatedFindings } from "../../lib/findings";
+
+export async function getStaticPaths() {
+	const findings = await getPublishedFindings();
+	return findings.map((entry) => ({
+		params: { slug: entry.id },
+		props: { entry, allFindings: findings },
+	}));
+}
+
+interface Props {
+	entry: CollectionEntry<"findings">;
+	allFindings: CollectionEntry<"findings">[];
+}
+
+const { entry, allFindings } = Astro.props;
+const { data } = entry;
+const { Content } = await render(entry);
+
+const dateLabel = data.publishedDate.toLocaleDateString("pt-BR", {
+	year: "numeric",
+	month: "long",
+	day: "numeric",
+});
+
+const retrievedLabel = data.retrievedAt.toLocaleDateString("pt-BR", {
+	year: "numeric",
+	month: "long",
+	day: "numeric",
+});
+
+const reviewedLabel = data.reviewedAt?.toLocaleDateString("pt-BR", {
+	year: "numeric",
+	month: "long",
+	day: "numeric",
+});
+
+const relatedFindings = getRelatedFindings(entry, allFindings, { limit: 3 });
+---
+
+<BaseLayout title={`${data.title} — Lunar Hub`} description={data.summary}>
+	<Header />
+	<main>
+		<article class="finding-detail">
+			<a class="back-link" href="/#latest">← Todas as descobertas</a>
+			<SourceBadge
+				organization={data.sourceOrganization}
+				name={data.sourceName}
+			/>
+			<h1>{data.title}</h1>
+			<div class="provenance">
+				<p class="dates">
+					Publicado em <time datetime={data.publishedDate.toISOString()}
+						>{dateLabel}</time
+					> pela fonte
+				</p>
+				<p class="dates dates--retrieved">
+					Coletado por nós em <time datetime={data.retrievedAt.toISOString()}
+						>{retrievedLabel}</time
+					>
+				</p>
+				{
+					data.reviewedBy && reviewedLabel && (
+						<p class="dates dates--reviewed">
+							Revisado por {data.reviewedBy} em{" "}
+							<time datetime={data.reviewedAt?.toISOString()}>
+								{reviewedLabel}
+							</time>
+						</p>
+					)
+				}
+			</div>
+
+			{
+				data.tags.length > 0 && (
+					<ul class="tag-list">
+						{data.tags.map((tag) => (
+							<li class="tag-chip">{tag}</li>
+						))}
+					</ul>
+				)
+			}
+
+			{
+				data.image && (
+					<figure>
+						<img src={data.image.src} alt={data.image.alt} />
+						<figcaption>
+							{data.image.credit}
+							{data.image.licenseNote ? ` — ${data.image.licenseNote}` : ""}
+						</figcaption>
+					</figure>
+				)
+			}
+
+			<div class="body">
+				<Content />
+			</div>
+
+			<a class="source-link" href={data.sourceUrl} target="_blank" rel="noopener noreferrer">
+				Ler na fonte original ({data.sourceName}) →
+			</a>
+		</article>
+
+		{
+			relatedFindings.length > 0 && (
+				<section class="related-findings">
+					<h2>Descobertas relacionadas</h2>
+					<div class="related-grid">
+						{relatedFindings.map((related) => (
+							<FindingCard entry={related} />
+						))}
+					</div>
+				</section>
+			)
+		}
+	</main>
+	<Footer />
+</BaseLayout>
+
+<style>
+	.finding-detail {
+		max-width: 40rem;
+		margin: 0 auto;
+		padding: var(--space-5) var(--space-3);
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-2);
+	}
+
+	.back-link {
+		font-size: 0.875rem;
+		text-decoration: none;
+	}
+
+	.finding-detail h1 {
+		margin: 0;
+	}
+
+	.provenance {
+		display: flex;
+		flex-direction: column;
+		gap: 0.25rem;
+	}
+
+	.dates {
+		font-size: 0.875rem;
+		margin: 0;
+		color: var(--text);
+	}
+
+	.dates--retrieved,
+	.dates--reviewed {
+		color: var(--text-muted);
+	}
+
+	.tag-list {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	.tag-chip {
+		font-size: 0.75rem;
+		font-weight: 600;
+		color: var(--text-muted);
+		background: var(--surface);
+		border: 1px solid var(--border);
+		border-radius: 0.375rem;
+		padding: 0.25rem 0.625rem;
+	}
+
+	.finding-detail figure {
+		margin: var(--space-2) 0;
+	}
+
+	.finding-detail figure img {
+		border-radius: var(--radius);
+	}
+
+	.finding-detail figcaption {
+		font-size: 0.75rem;
+		color: var(--text-muted);
+		margin-top: 0.375rem;
+	}
+
+	.body {
+		line-height: 1.7;
+	}
+
+	.source-link {
+		display: inline-block;
+		margin-top: var(--space-3);
+		font-weight: 600;
+		text-decoration: none;
+	}
+
+	.related-findings {
+		max-width: 40rem;
+		margin: var(--space-5) auto 0;
+		padding: 0 var(--space-3) var(--space-5);
+	}
+
+	.related-findings h2 {
+		font-size: 1.25rem;
+		margin: 0 0 var(--space-3);
+	}
+
+	.related-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+		gap: var(--space-3);
+	}
+</style>

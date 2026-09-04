@@ -1,0 +1,119 @@
+---
+---
+
+<!-- Plain vanilla JS — no framework needed, just listens for the browser's
+     install signal (Android/Chrome) or shows a manual hint on iOS Safari,
+     which doesn't support beforeinstallprompt at all. -->
+<div id="install-banner" class="install-banner" hidden>
+	<p id="install-text">Instale o Lunar Hub como app para acesso rápido, mesmo offline.</p>
+	<div class="actions">
+		<button type="button" id="install-action">Instalar</button>
+		<button type="button" id="install-dismiss" aria-label="Dispensar">✕</button>
+	</div>
+</div>
+
+<style>
+	.install-banner {
+		position: fixed;
+		left: var(--space-2);
+		right: var(--space-2);
+		bottom: var(--space-2);
+		z-index: 20;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: var(--space-2);
+		background: var(--surface);
+		border: 1px solid var(--border);
+		border-radius: var(--radius);
+		box-shadow: 0 4px 20px rgba(15, 23, 42, 0.12);
+		padding: var(--space-2) var(--space-2) var(--space-2) var(--space-3);
+		padding-bottom: calc(var(--space-2) + env(safe-area-inset-bottom, 0px));
+		max-width: 28rem;
+		margin: 0 auto;
+	}
+
+	.install-banner p {
+		margin: 0;
+		font-size: 0.875rem;
+		color: var(--text);
+	}
+
+	.actions {
+		display: flex;
+		align-items: center;
+		gap: var(--space-1);
+		flex-shrink: 0;
+	}
+
+	#install-action {
+		font: inherit;
+		font-weight: 600;
+		font-size: 0.8125rem;
+		color: #fff;
+		background: var(--primary);
+		border: none;
+		border-radius: var(--radius);
+		padding: 0.5rem 0.875rem;
+		cursor: pointer;
+		min-height: 2.25rem;
+	}
+
+	#install-dismiss {
+		font: inherit;
+		background: none;
+		border: none;
+		color: var(--text-muted);
+		cursor: pointer;
+		min-width: 2.25rem;
+		min-height: 2.25rem;
+	}
+</style>
+
+<script>
+	const STORAGE_KEY = "lunar-hub:install-dismissed";
+	const banner = document.getElementById("install-banner");
+	const text = document.getElementById("install-text");
+	const actionBtn = document.getElementById("install-action") as HTMLButtonElement;
+	const dismissBtn = document.getElementById("install-dismiss");
+
+	function alreadyDismissedOrInstalled() {
+		if (localStorage.getItem(STORAGE_KEY) === "1") return true;
+		// Standalone display mode = already installed/running as an app.
+		if (window.matchMedia("(display-mode: standalone)").matches) return true;
+		if ((navigator as any).standalone === true) return true; // iOS Safari
+		return false;
+	}
+
+	dismissBtn?.addEventListener("click", () => {
+		localStorage.setItem(STORAGE_KEY, "1");
+		banner?.setAttribute("hidden", "");
+	});
+
+	if (!alreadyDismissedOrInstalled()) {
+		let deferredPrompt: any = null;
+
+		window.addEventListener("beforeinstallprompt", (event) => {
+			event.preventDefault();
+			deferredPrompt = event;
+			banner?.removeAttribute("hidden");
+		});
+
+		actionBtn?.addEventListener("click", async () => {
+			if (!deferredPrompt) return;
+			deferredPrompt.prompt();
+			await deferredPrompt.userChoice;
+			deferredPrompt = null;
+			banner?.setAttribute("hidden", "");
+		});
+
+		// iOS Safari never fires beforeinstallprompt — show a manual hint instead.
+		const isIos = /iphone|ipad|ipod/i.test(navigator.userAgent);
+		if (isIos && text) {
+			text.textContent =
+				"Instale o Lunar Hub: toque em Compartilhar e depois em \"Adicionar à Tela de Início\".";
+			actionBtn?.setAttribute("hidden", "");
+			banner?.removeAttribute("hidden");
+		}
+	}
+</script>

@@ -1,0 +1,141 @@
+---
+---
+
+<section id="hero" class="hero">
+	<h1>Ciência lunar, direto das fontes</h1>
+	<p>
+		O Lunar Hub reúne e resume descobertas reais sobre a Lua — missões,
+		geologia, gelo, exploração — sempre com crédito e link para a fonte
+		original (NASA, ESA, JAXA e outros contribuintes públicos). Não
+		reproduzimos artigos inteiros: curamos e apontamos para a pesquisa
+		de verdade.
+	</p>
+	<div class="cta">
+		<a class="button" href="#latest">Ver últimas descobertas</a>
+		<a class="link" href="https://lunar-ice.vercel.app">
+			Conheça o Lunar Ice Intelligence →
+		</a>
+	</div>
+
+	<figure class="moon-figure">
+		<model-viewer
+			id="moon-model"
+			class="moon-model"
+			src="/models/moon.glb"
+			poster="/models/moon-poster.svg"
+			alt="Modelo 3D estilizado da Lua"
+			auto-rotate
+			rotation-per-second="6deg"
+			camera-controls
+			loading="lazy"
+			reveal="auto"
+			shadow-intensity="0.6"
+			exposure="1"
+		></model-viewer>
+		<figcaption>
+			Modelo 3D ilustrativo, gerado proceduralmente — não é dado real de
+			terreno lunar. Arraste para girar e explorar.
+		</figcaption>
+	</figure>
+</section>
+
+<script>
+	// O <model-viewer> se auto-registra ao ser importado.
+	import "@google/model-viewer";
+
+	// Respeita prefers-reduced-motion: desativa a rotação automática (o
+	// modelo continua totalmente interativo via camera-controls).
+	const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+	const moonModel = document.getElementById("moon-model");
+
+	function applyMotionPreference(reduceMotion: boolean) {
+		if (!moonModel) return;
+		if (reduceMotion) {
+			moonModel.removeAttribute("auto-rotate");
+		} else {
+			moonModel.setAttribute("auto-rotate", "");
+		}
+	}
+
+	applyMotionPreference(motionQuery.matches);
+	motionQuery.addEventListener("change", (event) => applyMotionPreference(event.matches));
+</script>
+
+<style>
+	.hero {
+		max-width: var(--content-width);
+		margin: 0 auto;
+		padding: var(--space-6) var(--space-3) var(--space-5);
+		text-align: center;
+	}
+
+	.hero h1 {
+		font-size: clamp(1.75rem, 4vw, 2.75rem);
+		margin-bottom: var(--space-2);
+	}
+
+	.hero p {
+		max-width: 40rem;
+		margin: 0 auto var(--space-4);
+		font-size: 1.0625rem;
+	}
+
+	.cta {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		align-items: center;
+		gap: var(--space-3);
+	}
+
+	.button {
+		display: inline-block;
+		background: var(--primary);
+		color: #fff;
+		text-decoration: none;
+		font-weight: 600;
+		padding: 0.75rem 1.5rem;
+		border-radius: var(--radius);
+		transition: background 0.15s ease;
+	}
+
+	.button:hover {
+		background: var(--primary-dark);
+		color: #fff;
+	}
+
+	.link {
+		text-decoration: none;
+		font-size: 0.9375rem;
+	}
+
+	.moon-figure {
+		margin: var(--space-5) auto 0;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: var(--space-1);
+	}
+
+	.moon-model {
+		width: 16rem;
+		height: 16rem;
+		max-width: 90vw;
+		background-color: transparent;
+		--poster-color: transparent;
+	}
+
+	.moon-figure figcaption {
+		max-width: 24rem;
+		font-size: 0.75rem;
+		color: var(--text-muted);
+		line-height: 1.5;
+	}
+
+	@media (max-width: 400px) {
+		.moon-model {
+			width: 12rem;
+			height: 12rem;
+		}
+	}
+</style>

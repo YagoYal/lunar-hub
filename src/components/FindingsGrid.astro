@@ -1,0 +1,52 @@
+---
+import type { CollectionEntry } from "astro:content";
+import FindingCard from "./FindingCard.astro";
+import RevealOnScroll from "./RevealOnScroll";
+
+interface Props {
+	entries: CollectionEntry<"findings">[];
+}
+
+const { entries } = Astro.props;
+---
+
+{
+	entries.length === 0 ? (
+		<p class="empty">
+			Nenhuma descoberta publicada ainda — o pipeline de revisão está em
+			andamento.
+		</p>
+	) : (
+		<ul class="findings-grid">
+			{entries.map((entry) => (
+				<li data-org={entry.data.sourceOrganization}>
+					<RevealOnScroll client:visible>
+						<FindingCard entry={entry} />
+					</RevealOnScroll>
+				</li>
+			))}
+		</ul>
+	)
+}
+
+<style>
+	.findings-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+		gap: var(--space-3);
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	.empty {
+		font-style: italic;
+	}
+
+	/* Below this width the carousel (FindingsCarousel.tsx) takes over. */
+	@media (max-width: 40rem) {
+		.findings-grid {
+			display: none;
+		}
+	}
+</style>

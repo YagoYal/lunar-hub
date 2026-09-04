@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="Espaço reservado para o modelo 3D da Lua enquanto carrega">
+	<defs>
+		<radialGradient id="moon" cx="35%" cy="35%" r="70%">
+			<stop offset="0%" stop-color="#e5e3df" />
+			<stop offset="60%" stop-color="#b8b6b2" />
+			<stop offset="100%" stop-color="#8a8884" />
+		</radialGradient>
+	</defs>
+	<rect width="200" height="200" fill="none" />
+	<circle cx="100" cy="100" r="82" fill="url(#moon)" />
+	<circle cx="70" cy="70" r="14" fill="#00000014" />
+	<circle cx="130" cy="110" r="20" fill="#00000012" />
+	<circle cx="95" cy="140" r="10" fill="#00000014" />
+</svg>
