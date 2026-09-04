@@ -49,10 +49,6 @@ Veja `docs/ROADMAP.md` para o plano completo e `docs/study-notes/decisions.md` p
 
 Nada é publicado automaticamente — ver `docs/study-notes/decisions.md` e a rotina semanal em `docs/ROTINA.md`.
 
-## Deploy
-
-Em breve.
-
 ## Mobile
 
 Em breve.
