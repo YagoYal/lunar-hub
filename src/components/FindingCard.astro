@@ -8,7 +8,7 @@ interface Props {
 
 const { entry } = Astro.props;
 const { data } = entry;
-const dateLabel = data.publishedDate.toLocaleDateString("pt-BR", {
+const dateLabel = data.publishedDate.toLocaleDateString("en-US", {
 	year: "numeric",
 	month: "short",
 	day: "numeric",
@@ -22,9 +22,9 @@ const dateLabel = data.publishedDate.toLocaleDateString("pt-BR", {
 	<div class="meta">
 		<time datetime={data.publishedDate.toISOString()}>{dateLabel}</time>
 		<div class="links">
-			<a href={`/findings/${entry.id}/`}>Detalhes</a>
+			<a href={`/findings/${entry.id}/`}>Details</a>
 			<a href={data.sourceUrl} target="_blank" rel="noopener noreferrer">
-				Ler fonte →
+				Read source →
 			</a>
 		</div>
 	</div>

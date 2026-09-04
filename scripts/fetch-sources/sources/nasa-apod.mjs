@@ -35,8 +35,8 @@ export async function fetchNasaApod({ days = 8 } = {}) {
 							alt: item.title,
 							credit: item.copyright ?? "NASA",
 							licenseNote: item.copyright
-								? "Verificar direitos do autor antes de publicar."
-								: "Domínio público (NASA), a menos que indicado o contrário.",
+								? "Verify the copyright holder's rights before publishing."
+								: "Public domain (NASA), unless otherwise noted.",
 						}
 					: undefined,
 		}));

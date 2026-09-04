@@ -1,16 +1,16 @@
 ---
-# Item de exemplo (fixture de desenvolvimento) — ver nota em artemis-ii-crewed-flyby.md.
-title: "Chandrayaan-3 pousa perto do polo sul lunar"
-summary: "Em 2023, a missão indiana Chandrayaan-3 realizou um pouso controlado próximo ao polo sul da Lua, região de interesse por possíveis depósitos de gelo em crateras permanentemente sombreadas."
+# Seed/development fixture — see note in artemis-ii-crewed-flyby.md.
+title: "Chandrayaan-3 lands near the lunar south pole"
+summary: "In 2023, India's Chandrayaan-3 mission carried out a controlled landing near the Moon's south pole, a region of interest for possible ice deposits in permanently shadowed craters."
 sourceName: "ISRO"
 sourceUrl: "https://www.isro.gov.in/"
 sourceOrganization: "ISRO"
 publishedDate: 2023-08-23
 retrievedAt: 2026-09-04
-tags: ["chandrayaan-3", "polo sul", "pouso lunar"]
+tags: ["chandrayaan-3", "south pole", "lunar landing"]
 reviewStatus: "published"
 reviewedBy: "seed-fixture"
 reviewedAt: 2026-09-04
 ---
 
-O pouso do Chandrayaan-3 tornou a Índia o primeiro país a alcançar essa região da Lua com sucesso. A área polar sul é alvo científico prioritário por causa da possibilidade de gelo de água preservado em crateras que nunca recebem luz solar direta. Consulte a fonte oficial da ISRO para os dados e imagens da missão.
+The Chandrayaan-3 landing made India the first country to successfully reach this region of the Moon. The south polar area is a top scientific target because of the possibility of water ice preserved in craters that never receive direct sunlight. Check ISRO's official source for the mission's data and imagery.

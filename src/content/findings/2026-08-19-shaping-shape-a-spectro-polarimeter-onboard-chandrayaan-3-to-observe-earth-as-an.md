@@ -12,7 +12,7 @@ reviewedBy: "YagoYal"
 reviewedAt: "2026-09-04"
 ---
 
-<!-- Rascunho gerado automaticamente. Revise o resumo, confirme a atribuição -->
-<!-- e a licença antes de mover este arquivo para fora de _drafts/. -->
+<!-- Auto-generated draft. Review the summary, confirm the attribution -->
+<!-- and license before moving this file out of _drafts/. -->
 
 Spectro-polarimetry of HAbitable Planet Earth (SHAPE) is an experimental instrument onboard the Propulsion Module (Orbiter) of the Chandrayaan-3 mission, designed to perform disc-integrated spectro-polarimetric observations of Earth from lunar and highly elliptical Earth orbits. SHAPE is a compact, lightweight spectro-polarimeter comprising three subsystems: the Electro-Optical Detector System…

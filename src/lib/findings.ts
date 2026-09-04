@@ -82,7 +82,7 @@ export function toFindingSummary(
 		sourceName: data.sourceName,
 		sourceOrganization: data.sourceOrganization,
 		sourceUrl: data.sourceUrl,
-		dateLabel: data.publishedDate.toLocaleDateString("pt-BR", {
+		dateLabel: data.publishedDate.toLocaleDateString("en-US", {
 			year: "numeric",
 			month: "short",
 			day: "numeric",

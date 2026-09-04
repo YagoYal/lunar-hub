@@ -74,8 +74,8 @@ export function toDraftFile(candidate) {
 	}
 	lines.push("---", "");
 	lines.push(
-		"<!-- Rascunho gerado automaticamente. Revise o resumo, confirme a atribuição -->",
-		"<!-- e a licença antes de mover este arquivo para fora de _drafts/. -->",
+		"<!-- Auto-generated draft. Review the summary, confirm the attribution -->",
+		"<!-- and license before moving this file out of _drafts/. -->",
 		"",
 		candidate.summary,
 	);

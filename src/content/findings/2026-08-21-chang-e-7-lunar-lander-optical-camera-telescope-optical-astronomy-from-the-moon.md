@@ -12,7 +12,7 @@ reviewedBy: "YagoYal"
 reviewedAt: "2026-09-04"
 ---
 
-<!-- Rascunho gerado automaticamente. Revise o resumo, confirme a atribuição -->
-<!-- e a licença antes de mover este arquivo para fora de _drafts/. -->
+<!-- Auto-generated draft. Review the summary, confirm the attribution -->
+<!-- and license before moving this file out of _drafts/. -->
 
 We report the design and manufacture of a new, lightweight, wide-field, optical camera-telescope on board the Chang'e 7 lunar mission (launched in August 2026 and due for lunar touchdown in late November 2026). The camera is capable of static, panchromatic imagery within a $420-696~nm$ optical wavelength range. The camera was designed and built under the small lunar astronomy observation station…

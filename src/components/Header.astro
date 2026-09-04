@@ -1,16 +1,15 @@
 ---
 const links = [
-	{ href: "#latest", label: "Descobertas" },
-	{ href: "#by-source", label: "Fontes" },
-	{ href: "#methodology", label: "Metodologia" },
-	{ href: "#security", label: "Segurança" },
-	{ href: "#about", label: "Sobre" },
+	{ href: "#latest", label: "Findings" },
+	{ href: "#by-source", label: "Sources" },
+	{ href: "#methodology", label: "Methodology" },
+	{ href: "#about", label: "About" },
 ];
 ---
 
 <header class="site-header">
 	<a class="brand" href="#hero">Lunar Hub</a>
-	<nav aria-label="Navegação principal">
+	<nav aria-label="Main navigation">
 		<ul>
 			{
 				links.map((link) => (
@@ -88,7 +87,6 @@ const links = [
 	#latest,
 	#by-source,
 	#methodology,
-	#security,
 	#about {
 		scroll-margin-top: 4.5rem;
 	}

@@ -12,7 +12,7 @@ reviewedBy: "YagoYal"
 reviewedAt: "2026-09-04"
 ---
 
-<!-- Rascunho gerado automaticamente. Revise o resumo, confirme a atribuição -->
-<!-- e a licença antes de mover este arquivo para fora de _drafts/. -->
+<!-- Auto-generated draft. Review the summary, confirm the attribution -->
+<!-- and license before moving this file out of _drafts/. -->
 
 The objective of this study was to characterize the human-made object that impacted the Moon on 5 August 2026, to estimate the dimensions of the crater it produced, and to compare the estimates with the crater subsequently measured by the Lunar Reconnaissance Orbiter (LRO). The impactor was the discarded upper stage of a SpaceX Falcon 9 rocket, which struck the surface near Einstein crater at a…

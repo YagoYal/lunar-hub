@@ -26,8 +26,7 @@ export default function FindingsCarousel({ entries }: Props) {
 	if (entries.length === 0) {
 		return (
 			<p style={{ fontStyle: "italic" }}>
-				Nenhuma descoberta publicada ainda — o pipeline de revisão está em
-				andamento.
+				No findings published yet — the review pipeline is in progress.
 			</p>
 		);
 	}
@@ -56,9 +55,9 @@ export default function FindingsCarousel({ entries }: Props) {
 						<div className="meta">
 							<span>{entry.dateLabel}</span>
 							<div className="links">
-								<a href={entry.detailHref}>Detalhes</a>
+								<a href={entry.detailHref}>Details</a>
 								<a href={entry.sourceUrl} target="_blank" rel="noopener noreferrer">
-									Ler fonte →
+									Read source →
 								</a>
 							</div>
 						</div>
@@ -68,7 +67,7 @@ export default function FindingsCarousel({ entries }: Props) {
 			<div className="controls">
 				<motion.button
 					type="button"
-					aria-label="Anterior"
+					aria-label="Previous"
 					whileTap={{ scale: 0.9 }}
 					onClick={() => scrollByCard(-1)}
 				>
@@ -76,7 +75,7 @@ export default function FindingsCarousel({ entries }: Props) {
 				</motion.button>
 				<motion.button
 					type="button"
-					aria-label="Próximo"
+					aria-label="Next"
 					whileTap={{ scale: 0.9 }}
 					onClick={() => scrollByCard(1)}
 				>

@@ -24,19 +24,19 @@ const { entry, allFindings } = Astro.props;
 const { data } = entry;
 const { Content } = await render(entry);
 
-const dateLabel = data.publishedDate.toLocaleDateString("pt-BR", {
+const dateLabel = data.publishedDate.toLocaleDateString("en-US", {
 	year: "numeric",
 	month: "long",
 	day: "numeric",
 });
 
-const retrievedLabel = data.retrievedAt.toLocaleDateString("pt-BR", {
+const retrievedLabel = data.retrievedAt.toLocaleDateString("en-US", {
 	year: "numeric",
 	month: "long",
 	day: "numeric",
 });
 
-const reviewedLabel = data.reviewedAt?.toLocaleDateString("pt-BR", {
+const reviewedLabel = data.reviewedAt?.toLocaleDateString("en-US", {
 	year: "numeric",
 	month: "long",
 	day: "numeric",
@@ -49,7 +49,7 @@ const relatedFindings = getRelatedFindings(entry, allFindings, { limit: 3 });
 	<Header />
 	<main>
 		<article class="finding-detail">
-			<a class="back-link" href="/#latest">← Todas as descobertas</a>
+			<a class="back-link" href="/#latest">← All findings</a>
 			<SourceBadge
 				organization={data.sourceOrganization}
 				name={data.sourceName}
@@ -57,19 +57,19 @@ const relatedFindings = getRelatedFindings(entry, allFindings, { limit: 3 });
 			<h1>{data.title}</h1>
 			<div class="provenance">
 				<p class="dates">
-					Publicado em <time datetime={data.publishedDate.toISOString()}
+					Published on <time datetime={data.publishedDate.toISOString()}
 						>{dateLabel}</time
-					> pela fonte
+					> by the source
 				</p>
 				<p class="dates dates--retrieved">
-					Coletado por nós em <time datetime={data.retrievedAt.toISOString()}
+					Collected by us on <time datetime={data.retrievedAt.toISOString()}
 						>{retrievedLabel}</time
 					>
 				</p>
 				{
 					data.reviewedBy && reviewedLabel && (
 						<p class="dates dates--reviewed">
-							Revisado por {data.reviewedBy} em{" "}
+							Reviewed by {data.reviewedBy} on{" "}
 							<time datetime={data.reviewedAt?.toISOString()}>
 								{reviewedLabel}
 							</time>
@@ -105,14 +105,14 @@ const relatedFindings = getRelatedFindings(entry, allFindings, { limit: 3 });
 			</div>
 
 			<a class="source-link" href={data.sourceUrl} target="_blank" rel="noopener noreferrer">
-				Ler na fonte original ({data.sourceName}) →
+				Read at the original source ({data.sourceName}) →
 			</a>
 		</article>
 
 		{
 			relatedFindings.length > 0 && (
 				<section class="related-findings">
-					<h2>Descobertas relacionadas</h2>
+					<h2>Related findings</h2>
 					<div class="related-grid">
 						{relatedFindings.map((related) => (
 							<FindingCard entry={related} />

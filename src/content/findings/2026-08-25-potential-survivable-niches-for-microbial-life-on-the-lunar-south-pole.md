@@ -12,7 +12,7 @@ reviewedBy: "YagoYal"
 reviewedAt: "2026-09-04"
 ---
 
-<!-- Rascunho gerado automaticamente. Revise o resumo, confirme a atribuição -->
-<!-- e a licença antes de mover este arquivo para fora de _drafts/. -->
+<!-- Auto-generated draft. Review the summary, confirm the attribution -->
+<!-- and license before moving this file out of _drafts/. -->
 
 Most lunar surface conditions are incredibly harsh for microbial survival. High ultraviolet radiation, temperatures, and energetic particle radiation limit survival over most unprotected lunar surfaces, particularly in equatorial regions where all previous crewed exploration occurred. However, whether these harsh conditions are widespread at lunar poles has not been examined considering…

@@ -7,7 +7,6 @@ import FindingsGrid from "../components/FindingsGrid.astro";
 import FindingsCarousel from "../components/FindingsCarousel";
 import BySourceFilter from "../components/BySourceFilter.astro";
 import MethodologySection from "../components/MethodologySection.astro";
-import SecurityBackendSection from "../components/SecurityBackendSection.astro";
 import { getPublishedFindings, toFindingSummary } from "../lib/findings";
 
 const findings = await getPublishedFindings();
@@ -21,7 +20,7 @@ const findingSummaries = findings.map(toFindingSummary);
 		<Hero />
 
 		<section id="latest" class="latest">
-			<h2>Últimas descobertas</h2>
+			<h2>Latest findings</h2>
 			<BySourceFilter
 				organizations={organizations}
 				targetSelector=".findings-grid > li"
@@ -33,7 +32,6 @@ const findingSummaries = findings.map(toFindingSummary);
 		</section>
 
 		<MethodologySection />
-		<SecurityBackendSection />
 	</main>
 	<Footer />
 </BaseLayout>

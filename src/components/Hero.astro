@@ -2,18 +2,18 @@
 ---
 
 <section id="hero" class="hero">
-	<h1>Ciência lunar, direto das fontes</h1>
+	<h1>Lunar science, straight from the sources</h1>
 	<p>
-		O Lunar Hub reúne e resume descobertas reais sobre a Lua — missões,
-		geologia, gelo, exploração — sempre com crédito e link para a fonte
-		original (NASA, ESA, JAXA e outros contribuintes públicos). Não
-		reproduzimos artigos inteiros: curamos e apontamos para a pesquisa
-		de verdade.
+		Lunar Hub gathers and summarizes real findings about the Moon —
+		missions, geology, ice, exploration — always credited and linked
+		back to the original source (NASA, ESA, JAXA, and other public
+		contributors). We don't reproduce full articles: we curate and
+		point to the real research.
 	</p>
 	<div class="cta">
-		<a class="button" href="#latest">Ver últimas descobertas</a>
+		<a class="button" href="#latest">See latest findings</a>
 		<a class="link" href="https://lunar-ice.vercel.app">
-			Conheça o Lunar Ice Intelligence →
+			Check out Lunar Ice Intelligence →
 		</a>
 	</div>
 
@@ -23,7 +23,7 @@
 			class="moon-model"
 			src="/models/moon.glb"
 			poster="/models/moon-poster.svg"
-			alt="Modelo 3D estilizado da Lua"
+			alt="Stylized 3D model of the Moon"
 			auto-rotate
 			rotation-per-second="6deg"
 			camera-controls
@@ -33,18 +33,18 @@
 			exposure="1"
 		></model-viewer>
 		<figcaption>
-			Modelo 3D ilustrativo, gerado proceduralmente — não é dado real de
-			terreno lunar. Arraste para girar e explorar.
+			Illustrative, procedurally generated 3D model — not real lunar
+			terrain data. Drag to rotate and explore.
 		</figcaption>
 	</figure>
 </section>
 
 <script>
-	// O <model-viewer> se auto-registra ao ser importado.
+	// <model-viewer> self-registers once imported.
 	import "@google/model-viewer";
 
-	// Respeita prefers-reduced-motion: desativa a rotação automática (o
-	// modelo continua totalmente interativo via camera-controls).
+	// Respect prefers-reduced-motion: disable auto-rotate (the model
+	// stays fully interactive via camera-controls).
 	const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
 	const moonModel = document.getElementById("moon-model");
 

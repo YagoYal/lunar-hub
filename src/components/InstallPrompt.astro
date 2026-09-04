@@ -5,10 +5,10 @@
      install signal (Android/Chrome) or shows a manual hint on iOS Safari,
      which doesn't support beforeinstallprompt at all. -->
 <div id="install-banner" class="install-banner" hidden>
-	<p id="install-text">Instale o Lunar Hub como app para acesso rápido, mesmo offline.</p>
+	<p id="install-text">Install Lunar Hub as an app for quick access, even offline.</p>
 	<div class="actions">
-		<button type="button" id="install-action">Instalar</button>
-		<button type="button" id="install-dismiss" aria-label="Dispensar">✕</button>
+		<button type="button" id="install-action">Install</button>
+		<button type="button" id="install-dismiss" aria-label="Dismiss">✕</button>
 	</div>
 </div>
 
@@ -111,7 +111,7 @@
 		const isIos = /iphone|ipad|ipod/i.test(navigator.userAgent);
 		if (isIos && text) {
 			text.textContent =
-				"Instale o Lunar Hub: toque em Compartilhar e depois em \"Adicionar à Tela de Início\".";
+				"Install Lunar Hub: tap Share, then \"Add to Home Screen\".";
 			actionBtn?.setAttribute("hidden", "");
 			banner?.removeAttribute("hidden");
 		}

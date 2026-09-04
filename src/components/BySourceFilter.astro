@@ -9,7 +9,7 @@ const { organizations, targetSelector } = Astro.props;
 ---
 
 <div id="by-source" class="by-source-filter" data-target={targetSelector}>
-	<button type="button" class="chip is-active" data-filter="">Todas</button>
+	<button type="button" class="chip is-active" data-filter="">All</button>
 	{
 		organizations.map((org) => (
 			<button type="button" class="chip" data-filter={org}>

@@ -12,7 +12,7 @@ reviewedBy: "YagoYal"
 reviewedAt: "2026-09-04"
 ---
 
-<!-- Rascunho gerado automaticamente. Revise o resumo, confirme a atribuição -->
-<!-- e a licença antes de mover este arquivo para fora de _drafts/. -->
+<!-- Auto-generated draft. Review the summary, confirm the attribution -->
+<!-- and license before moving this file out of _drafts/. -->
 
 Observations suggest that the solar wind ions impinging on the lunar surface possess a finite temperature. The effect of ion temperature on the plasma sheath over the lunar surface is investigated in this paper. To account for thermal effects, a thermal pressure term has been added to the ion-flow force equation. Quantitative estimation of sheath characteristics has been performed by solving the…

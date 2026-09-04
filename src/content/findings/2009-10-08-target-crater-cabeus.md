@@ -14,10 +14,10 @@ image:
   src: "https://apod.nasa.gov/apod/image/0910/391631main_southpole2_c600.jpg"
   alt: "Target Crater Cabeus"
   credit: "NASA"
-  licenseNote: "Domínio público (NASA), a menos que indicado o contrário."
+  licenseNote: "Public domain (NASA), unless otherwise noted."
 ---
 
-<!-- Rascunho gerado automaticamente. Revise o resumo, confirme a atribuição -->
-<!-- e a licença antes de mover este arquivo para fora de _drafts/. -->
+<!-- Auto-generated draft. Review the summary, confirm the attribution -->
+<!-- and license before moving this file out of _drafts/. -->
 
 About 100 kilometers from the Moon's South Pole, 100 kilometer wide crater Cabeus is the target for two LCROSS mission spacecraft on course to impact the Moon tomorrow. The shadowed crater is strongly foreshortened in this mosaic, a representative view of the region for earthbound telescopes. The impacts are intended to create billowing debris plumes extending into the sunlight above the crater…
