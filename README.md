@@ -51,11 +51,11 @@ Nada é publicado automaticamente — ver `docs/study-notes/decisions.md` e a ro
 
 ## Deploy
 
-Recomendado: [Vercel](https://vercel.com) (tier gratuito, zero-config para o build estático do Astro). `vercel.json` já configura cabeçalhos de segurança (CSP, X-Frame-Options etc.). O cron de ingestão roda via GitHub Actions (`.github/workflows/fetch-findings.yml`), independente da hospedagem — configure o secret `NASA_API_KEY` no repositório (aba **Secrets**, não Variables) para usá-lo nos runs agendados.
+Em breve.
 
 ## Mobile
 
-v1 é um PWA instalável (grátis, funciona em Android/iOS) — essa é a versão mobile definitiva do projeto. Não há plano de publicar nas lojas (Play Store/App Store): decisão consciente para não gastar tempo/dinheiro em distribuição antes de validar se o conteúdo tem leitor. Ver `docs/study-notes/decisions.md`.
+Em breve.
 
 ## Modelo 3D
 
