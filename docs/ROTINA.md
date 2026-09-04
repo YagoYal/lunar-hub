@@ -19,6 +19,7 @@ Log simples (atualize à mão a cada revisão semanal):
 | Semana | Findings publicados | Findings descartados (falso positivo) |
 | ------ | -------------------- | --------------------------------------- |
 | 2026-09-04 (sessão inicial) | 10 | 8 |
+| 2026-09-04 (fora do ciclo — 2 fontes de arquitetura lunar adicionadas manualmente, não veio do `fetch:sources`) | +2 (total: 12) | 0 |
 
 ## Critério de morte
 
