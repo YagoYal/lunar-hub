@@ -11,6 +11,15 @@ interface Props {
  * Mobile-first swipeable carousel. Only meant to be mounted below the
  * grid breakpoint (see .findings-carousel-wrapper in FindingsSection) —
  * kept as its own island so the desktop grid never pays for this JS.
+ *
+ * Cards render as plain, always-visible markup (no opacity animation on
+ * mount) — an earlier version used whileInView to fade cards in, which
+ * server-renders as opacity:0 and only becomes visible once React
+ * hydrates. If hydration is ever slow, blocked, or fails, that leaves
+ * findings permanently invisible — exactly the bug this file now avoids.
+ * Buttons still use Framer Motion for the tap feedback, which is safe:
+ * they're visible by default and only animate in response to a real
+ * user interaction after hydration, never gating initial visibility.
  */
 export default function FindingsCarousel({ entries }: Props) {
 	const trackRef = useRef<HTMLDivElement>(null);
@@ -35,15 +44,7 @@ export default function FindingsCarousel({ entries }: Props) {
 		<div className="carousel">
 			<div className="track" ref={trackRef}>
 				{entries.map((entry) => (
-					<motion.article
-						key={entry.id}
-						data-card
-						className="card"
-						initial={{ opacity: 0, y: 12 }}
-						whileInView={{ opacity: 1, y: 0 }}
-						viewport={{ once: true, margin: "-20px" }}
-						transition={{ duration: 0.35, ease: "easeOut" }}
-					>
+					<article key={entry.id} data-card className="card">
 						<SourceBadge
 							organization={entry.sourceOrganization}
 							name={entry.sourceName}
@@ -61,7 +62,7 @@ export default function FindingsCarousel({ entries }: Props) {
 								</a>
 							</div>
 						</div>
-					</motion.article>
+					</article>
 				))}
 			</div>
 			<div className="controls">

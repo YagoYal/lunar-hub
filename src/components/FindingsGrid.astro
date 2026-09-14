@@ -1,7 +1,6 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import FindingCard from "./FindingCard.astro";
-import RevealOnScroll from "./RevealOnScroll";
 
 interface Props {
 	entries: CollectionEntry<"findings">[];
@@ -19,9 +18,7 @@ const { entries } = Astro.props;
 		<ul class="findings-grid">
 			{entries.map((entry) => (
 				<li data-org={entry.data.sourceOrganization}>
-					<RevealOnScroll client:visible>
-						<FindingCard entry={entry} />
-					</RevealOnScroll>
+					<FindingCard entry={entry} />
 				</li>
 			))}
 		</ul>
