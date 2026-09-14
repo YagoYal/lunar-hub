@@ -15,9 +15,11 @@ image:
   alt: "Target Crater Cabeus"
   credit: "NASA"
   licenseNote: "Public domain (NASA), unless otherwise noted."
+relatedSources:
+  - name: "NASA Science — LCROSS"
+    url: "https://science.nasa.gov/mission/lcross/"
+  - name: "ScienceDaily — NASA Spacecraft LCROSS Impacts Lunar Crater In Search Of Water Ice"
+    url: "https://www.sciencedaily.com/releases/2009/10/091009101945.htm"
 ---
-
-<!-- Auto-generated draft. Review the summary, confirm the attribution -->
-<!-- and license before moving this file out of _drafts/. -->
 
 About 100 kilometers from the Moon's South Pole, 100 kilometer wide crater Cabeus is the target for two LCROSS mission spacecraft on course to impact the Moon tomorrow. The shadowed crater is strongly foreshortened in this mosaic, a representative view of the region for earthbound telescopes. The impacts are intended to create billowing debris plumes extending into the sunlight above the crater…

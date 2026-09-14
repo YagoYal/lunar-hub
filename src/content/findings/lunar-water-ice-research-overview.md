@@ -11,6 +11,11 @@ tags: ["lunar ice", "pole", "planetary science"]
 reviewStatus: "published"
 reviewedBy: "seed-fixture"
 reviewedAt: 2026-09-04
+relatedSources:
+  - name: "Scientific American — Beyond the Shadow of a Doubt, Water Ice Exists on the Moon"
+    url: "https://www.scientificamerican.com/article/beyond-the-shadow-of-a-doubt-water-ice-exists-on-the-moon/"
+  - name: "PNAS — Direct evidence of surface exposed water ice in the lunar polar regions"
+    url: "https://www.pnas.org/doi/10.1073/pnas.1802345115"
 ---
 
 Different instruments and missions (orbital and controlled-impact) have contributed, over the years, to the current understanding of water ice distribution in the Moon's permanently shadowed regions — a resource relevant both to science and to future exploration missions. For the latest state of the art, check NASA's official source.

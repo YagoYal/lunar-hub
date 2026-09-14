@@ -13,6 +13,11 @@ tags: ["artemis", "crewed mission", "orion"]
 reviewStatus: "published"
 reviewedBy: "seed-fixture"
 reviewedAt: 2026-09-04
+relatedSources:
+  - name: "CNN — Artemis II takes in unprecedented views in historic moon flyby"
+    url: "https://www.cnn.com/2026/04/06/science/live-news/nasa-artemis-2-flyby-moon-mission"
+  - name: "Wikipedia — Artemis II"
+    url: "https://en.wikipedia.org/wiki/Artemis_II"
 ---
 
 Artemis II is planned as the first crewed mission of the Artemis program, testing the Orion and SLS systems on a lunar flyby trajectory ahead of landing missions. For up-to-date timeline and objective details, check NASA's official source.

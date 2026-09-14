@@ -32,6 +32,17 @@ const findings = defineCollection({
 		reviewStatus: z.enum(["draft", "approved", "published"]).default("draft"),
 		reviewedBy: z.string().optional(),
 		reviewedAt: z.coerce.date().optional(),
+		// Optional — only for findings with real, independently-verifiable
+		// secondary coverage (e.g. a widely-reported mission milestone). Never
+		// filled just to pad the field; most findings won't have this.
+		relatedSources: z
+			.array(
+				z.object({
+					name: z.string(),
+					url: z.string().url(),
+				}),
+			)
+			.optional(),
 	}),
 });
 

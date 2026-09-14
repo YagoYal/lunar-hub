@@ -11,6 +11,11 @@ tags: ["slim", "precision landing", "jaxa"]
 reviewStatus: "published"
 reviewedBy: "seed-fixture"
 reviewedAt: 2026-09-04
+relatedSources:
+  - name: "Scientific American — How Japan's 'Moon Sniper' Mission Hit Its Mark"
+    url: "https://www.scientificamerican.com/article/how-japans-moon-sniper-mission-hit-its-mark/"
+  - name: "CBS News — Japan's powered-down 'Moon Sniper' lunar lander achieves major goals"
+    url: "https://www.cbsnews.com/news/japan-slim-lunar-lander-pinpoint-touchdown-battery-problems-may-end-soon/"
 ---
 
 SLIM tested optical navigation technology for precision landing, a relevant step for future missions that need to reach specific scientific targets (such as crater rims or lava tubes) instead of wide, flat areas. Check JAXA's official source for the full mission report.
