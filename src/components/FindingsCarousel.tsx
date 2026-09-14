@@ -44,7 +44,12 @@ export default function FindingsCarousel({ entries }: Props) {
 		<div className="carousel">
 			<div className="track" ref={trackRef}>
 				{entries.map((entry) => (
-					<article key={entry.id} data-card className="card">
+					<article
+						key={entry.id}
+						data-card
+						data-org={entry.sourceOrganization}
+						className="card"
+					>
 						<SourceBadge
 							organization={entry.sourceOrganization}
 							name={entry.sourceName}

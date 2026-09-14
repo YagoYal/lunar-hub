@@ -13,6 +13,13 @@
 </div>
 
 <style>
+	/* Author CSS always beats the browser's default [hidden]{display:none}
+	   (same specificity, but author origin outranks user-agent origin) — so
+	   without this, setting the hidden attribute below did nothing visually. */
+	.install-banner[hidden] {
+		display: none;
+	}
+
 	.install-banner {
 		position: fixed;
 		left: var(--space-2);

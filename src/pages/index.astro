@@ -23,7 +23,7 @@ const findingSummaries = findings.map(toFindingSummary);
 			<h2>Latest findings</h2>
 			<BySourceFilter
 				organizations={organizations}
-				targetSelector=".findings-grid > li"
+				targetSelector=".findings-grid > li, .carousel [data-card]"
 			/>
 			<FindingsGrid entries={findings} />
 			<div class="mobile-carousel">
