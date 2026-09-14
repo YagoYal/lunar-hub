@@ -20,6 +20,8 @@ Log simples (atualize à mão a cada revisão semanal):
 | ------ | -------------------- | --------------------------------------- |
 | 2026-09-04 (sessão inicial) | 10 | 8 |
 | 2026-09-04 (fora do ciclo — 2 fontes de arquitetura lunar adicionadas manualmente, não veio do `fetch:sources`) | +2 (total: 12) | 0 |
+| 2026-09-14 (`fetch:sources` — NASA APOD; arXiv retornou 429, pulado) | +0 (net; 1 publicado depois substituído por matéria mais recente da mesma fonte) | 3 (Lua só citada incidentalmente ou fora do tema) |
+| 2026-09-14 (fora do ciclo — revisão manual do arquivo histórico da NASA APOD, a pedido do usuário, por conta da matéria do `fetch:sources` estar desatualizada) | +12 (total: 24) | 4 (2 fora do tema/incidentais + 2 quase-duplicados do mesmo evento astronômico) |
 
 ## Critério de morte
 
